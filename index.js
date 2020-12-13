@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000
 const { MongoClient } = require("mongodb");
 
 const uri = process.env.db_uri
+const password = process.env.password
 console.log(uri);
 // use the express-static middleware
 //app.use(express.static("public"));
@@ -18,8 +19,13 @@ express()
   .get('/', function (req, res) {
      res.send('libre db');
   })
-  .get('/libre/:numOfRecords', async function (req, res) {
+  .get('/pass/:password/libre/:numOfRecords', async function (req, res) {
     try {
+       console.log(req.params.password);
+       if(req.params.password != password) {
+           res.send('wrong passwrod');
+           return;
+       }
        limit = parseInt(req.params.numOfRecords);
        if(limit > 20) {
            limit = 20;

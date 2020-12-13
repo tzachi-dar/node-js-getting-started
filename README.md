@@ -37,3 +37,17 @@ For more information about using Node.js on Heroku, see these Dev Center article
 - [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
 - [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+
+To run the app localy: heroku local web
+To deploy the app: 
+set password=
+set db_uri=
+heroku config:set db_uri="mongodb+srv://heroku_b6k1n0tj:<pass>@cluster-b6k1n0tj.bg18m.mongodb.net/nightscout3?retryWrites=true&w=majority"
+heroku config:set password="pass"
+
+to access the site use: http://127.0.0.1:5000/pass/ab/libre/1
+
+To update the site:
+git add .
+git commit -am "make it better"
+git push heroku master
