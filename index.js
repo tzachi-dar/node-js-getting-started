@@ -43,8 +43,8 @@ express()
         database.collection("libre").find(query).sort(mysort).limit(limit).toArray(function(err, result) {
             if (err) throw err;
             console.log(result);
+            client.close()
             return res.json(result);
-            db.close();
         });
 
 
@@ -54,6 +54,7 @@ express()
     }
     finally {
       // Ensures that the client will close when you finish/error
+      // TODO: client is not defined here
       if(client) {
           await client.close();
       }
